@@ -1,0 +1,12 @@
+import requests
+from bs4 import BeautifulSoup
+
+def get_headlines(url):
+    response = requests.get(url)
+    if response.status_code == 200:
+        soup = BeautifulSoup(response.text, 'html.parser')
+        print(f"Page Title: {soup.title.text}")
+        for headline in soup.find_all('h2'):
+            print(f"- {headline.text.strip()}")
+
+# Usage: get_headlines('https://example.com')
