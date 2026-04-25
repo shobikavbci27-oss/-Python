@@ -1,0 +1,9 @@
+# Print numbers 1 to 5
+for i in range(1, 6):
+    print(f"Number: {i}")
+
+# Working with a list
+fruits = ["apple", "banana", "cherry"]
+fruits.append("date") # Adds to end of list
+for fruit in fruits:
+    print(fruit.capitalize())
