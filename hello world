@@ -1,0 +1,2 @@
+# The print() function sends data to the standard output (stdout)
+print("Hello, World!")
