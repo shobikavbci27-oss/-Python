@@ -1,0 +1,16 @@
+import threading
+import time
+
+def download_data(task_name):
+    print(f"Starting {task_name}...")
+    time.sleep(2) # Simulate network wait
+    print(f"Finished {task_name}.")
+
+threads = []
+for i in range(3):
+    t = threading.Thread(target=download_data, args=(f"Download-{i}",))
+    threads.append(t)
+    t.start()
+
+for t in threads:
+    t.join() # Wait for all threads to finish
