@@ -1,0 +1,11 @@
+class DatabaseConnection:
+    def __enter__(self):
+        print("Connecting to database...")
+        return "DATABASE_OBJ"
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        print("Closing database connection.")
+
+with DatabaseConnection() as db:
+    print(f"Working with {db}")
+# Logic triggers automatic connection closing even if an error occurs
