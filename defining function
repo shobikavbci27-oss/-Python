@@ -1,0 +1,7 @@
+def calculate_area(length, width):
+    """Returns the area of a rectangle."""
+    return length * width
+
+# Function call
+area = calculate_area(10, 5)
+print(f"The area is: {area}")
