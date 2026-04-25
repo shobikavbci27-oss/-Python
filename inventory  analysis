@@ -1,0 +1,37 @@
+def process_inventory(raw_data):
+    inventory_summary = {}
+    errors = 0
+
+    for item, quantity in raw_data:
+        try:
+            # Ensure quantity is an integer, even if it came as a string or float
+            qty = int(float(quantity))
+            
+            # Aggregate the totals
+            if item in inventory_summary:
+                inventory_summary[item] += qty
+            else:
+                inventory_summary[item] = qty
+        except (ValueError, TypeError):
+            # Track how many rows had bad data
+            errors += 1
+            print(f"Skipping invalid data: {item} -> {quantity}")
+
+    return inventory_summary, errors
+
+# Sample data with some "dirty" entries
+data_stream = [
+    ("Apples", 50),
+    ("Bananas", "120"),     # String number (handled)
+    ("Apples", 30.5),      # Float (handled)
+    ("Oranges", "N/A"),    # Non-numeric (error caught)
+    ("Bananas", None)      # None type (error caught)
+]
+
+summary, error_count = process_inventory(data_stream)
+
+print("\n--- Final Inventory ---")
+for product, total in summary.items():
+    print(f"{product:10}: {total} units")
+
+print(f"\nProcessing complete with {error_count} data errors.")
