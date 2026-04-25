@@ -1,0 +1,12 @@
+import requests
+from bs4 import BeautifulSoup
+
+# Fetch a webpage
+url = 'https://example.com'
+response = requests.get(url)
+
+# Parse HTML and find all h1 tags
+soup = BeautifulSoup(response.text, 'html.parser')
+titles = [title.text.strip() for title in soup.find_all('h1')]
+
+print(f"Extracted Titles: {titles}")
