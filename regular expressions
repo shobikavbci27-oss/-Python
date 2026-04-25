@@ -1,0 +1,14 @@
+import re
+
+text = "Contact us at support@example.com or sales-department@office.org."
+
+# Pattern to find email addresses
+email_pattern = r"\b[\w\.-]+@[\w\.-]+\.\w{2,}\b"
+emails = re.findall(email_pattern, text)
+print(f"Found emails: {emails}")
+
+# Clean text by removing special characters and extra whitespace
+dirty_text = "Python   is... AWESOME!!!"
+clean_text = re.sub(r"[^\w\s]", "", dirty_text) # Remove punctuation
+clean_text = re.sub(r"\s+", " ", clean_text)    # Collapse multiple spaces
+print(f"Cleaned: {clean_text.strip()}")
