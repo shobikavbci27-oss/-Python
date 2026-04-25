@@ -1,0 +1,12 @@
+import schedule
+import time
+
+def daily_backup():
+    print("Backing up data...")
+    # Add your backup logic here
+
+schedule.every().day.at("10:00").do(daily_backup)
+
+# while True:
+#     schedule.run_pending()
+#     time.sleep(1)
