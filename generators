@@ -1,0 +1,10 @@
+def fibonacci_generator(limit):
+    """Generates Fibonacci numbers up to a limit."""
+    a, b = 0, 1
+    while a < limit:
+        yield a
+        a, b = b, a + b
+
+# Using the generator in a loop
+for num in fibonacci_generator(100):
+    print(num, end=" ") # 0 1 1 2 3 5 8 13 21 34 55 89
